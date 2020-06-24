@@ -1,7 +1,18 @@
+package classification.knn
+
 import kotlin.math.pow
 import kotlin.math.sqrt
 
-class KNeighborsClassifier(val k: Int = 3) {
+class KNeighborsClassifier(
+    val k: Int = 3,
+    // TODO implement weights
+    weights: (distance: Double) -> Double = Weights.UNIFORM,
+    // TODO implement spatial structures
+    algorithm: Algorithm = Algorithm.Auto,
+    algorithmLeafSize: Int = 30,
+    // TODO implement metric
+    metric: (inst1: Map<String, Any>, inst2: Map<String, Any>) -> Double = Metrics.EUCLIDEAN_DISTANCE
+) {
 
     lateinit var data: List<Map<String, Any>>
 
